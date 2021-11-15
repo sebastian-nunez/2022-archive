@@ -1,5 +1,5 @@
 class Solution {
-public:
+   public:
     vector<int> twoSum(vector<int>& nums, int target) {
         unordered_map<int, int> hashMap;
 
@@ -11,7 +11,6 @@ public:
             }
 
             hashMap.insert(make_pair(nums[i], i));
-
         }
 
         return {};
