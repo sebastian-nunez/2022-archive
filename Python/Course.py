@@ -19,7 +19,7 @@ class Course:
         return self.courseName
 
     def dropStudent(self, student):
-        self.students.pop(student)
+        self.students.remove(student)
 
 
 def main():
@@ -38,8 +38,6 @@ def main():
                 break
             except:
                 print('PLEASE ENTER A INTEGER!')
-
-        assert choice
 
         if choice == 1:
             name = input('Enter the name of the student :: ')
