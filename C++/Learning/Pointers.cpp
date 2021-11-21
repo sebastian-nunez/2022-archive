@@ -22,7 +22,7 @@ int main() {
 
     int PI = 3;
     ptr = &PI;
-    cout << *ptr << endl;
+    std::cout << *ptr << endl;
 
     int **p_ptr = &ptr;
 
@@ -34,7 +34,7 @@ int main() {
     cout << "**p_ptr: " << **p_ptr << endl;
 
     **p_ptr = 4;
-    cout << "*ptr: " << **p_ptr << endl;
+    std::cout << "*ptr: " << **p_ptr << endl;
 
     list<int> l1;
 
