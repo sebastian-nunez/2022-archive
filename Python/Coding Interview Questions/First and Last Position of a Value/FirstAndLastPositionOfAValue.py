@@ -1,7 +1,7 @@
 # Returns (first, last]) index of target value in the array
 #      0  1  2  3  4  5  6  7  8  9  10
-arr = [5, 5, 7, 7, 8, 8, 8, 8, 9, 9, 12]
-target = 5
+arr = [5, 5, 7, 7, 8, 8, 8, 8, 10, 10, 12]
+target = 8
 
 
 # Returns leftmost index of the target
