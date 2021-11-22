@@ -9,11 +9,11 @@ class Solution:
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
         n = 8
         output = []
+        taken = [[False for col in range(n)] for row in range(n)]
 
         def inside(x, y):
             return x >= 0 and x < n and y >= 0 and y < n
 
-        taken = [[False for y in range(n)] for x in range(n)]
         for queen in queens:
             taken[queen[0]][queen[1]] = True
 
@@ -24,13 +24,12 @@ class Solution:
 
                 x = king[0]
                 y = king[1]
-
                 while inside(x, y) and not taken[x][y]:
                     x += dx
                     y += dy
 
-                if inside(x, y) and taken[x][y]:
-                    output.append([x, y])
+                    if inside(x, y) and taken[x][y]:
+                        output.append([x, y])
 
         return output
 # @lc code=end
