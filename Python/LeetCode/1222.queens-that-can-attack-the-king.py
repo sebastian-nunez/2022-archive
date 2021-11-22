@@ -6,12 +6,12 @@
 
 # @lc code=start
 class Solution:
-    def inside(self, x, y, n):
-        return x >= 0 and x < n and y >= 0 and y < n
-
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
         n = 8
         output = []
+
+        def inside(x, y):
+            return x >= 0 and x < n and y >= 0 and y < n
 
         taken = [[False for y in range(n)] for x in range(n)]
         for queen in queens:
@@ -24,16 +24,13 @@ class Solution:
 
                 x = king[0]
                 y = king[1]
-                while True:
+
+                while inside(x, y) and not taken[x][y]:
                     x += dx
                     y += dy
 
-                    if not self.inside(x, y, n):
-                        break
-
-                    if taken[x][y]:
-                        output.append([x, y])
-                        break
+                if inside(x, y) and taken[x][y]:
+                    output.append([x, y])
 
         return output
 # @lc code=end
