@@ -6,34 +6,34 @@
 
 # @lc code=start
 class Solution:
-    def inside(self, row, col):
-        return row >= 0 and row < 8 and col >= 0 and col < 8
+    def inside(self, x, y, n):
+        return x >= 0 and x < n and y >= 0 and y < n
 
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
+        n = 8
         output = []
 
-        taken = [[False for col in range(8)] for row in range(8)]
+        taken = [[False for y in range(n)] for x in range(n)]
         for queen in queens:
             taken[queen[0]][queen[1]] = True
 
-        for d_row in range(-1, 2):
-            for d_col in range(-1, 2):
-                if d_row == 0 and d_col == 0:
+        for dx in range(-1, 2):
+            for dy in range(-1, 2):
+                if dx == 0 and dy == 0:
                     continue
 
-                row = king[0]
-                col = king[1]
+                x = king[0]
+                y = king[1]
                 while True:
-                    row += d_row
-                    col += d_col
+                    x += dx
+                    y += dy
 
-                    if not self.inside(row, col):
+                    if not self.inside(x, y, n):
                         break
 
-                    if taken[row][col]:
-                        output.append([row, col])
+                    if taken[x][y]:
+                        output.append([x, y])
                         break
 
         return output
-
 # @lc code=end
