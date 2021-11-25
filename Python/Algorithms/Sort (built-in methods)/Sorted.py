@@ -16,4 +16,4 @@ def sortByPlaceThenName(winner): return (winner[1], winner[0])
 sorted_winners = dict(
     sorted(winners.items(), key=sortByPlaceThenName, reverse=True))
 
-print(sorted_winners)
+print(sorted_winners, end='\n')
