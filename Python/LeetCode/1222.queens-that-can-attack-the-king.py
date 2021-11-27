@@ -9,11 +9,11 @@ class Solution:
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
         n = 8
         output = []
-        taken = [[False for col in range(n)] for row in range(n)]
 
         def inside(x, y):
             return x >= 0 and x < n and y >= 0 and y < n
 
+        taken = [[False for col in range(n)] for row in range(n)]
         for queen in queens:
             taken[queen[0]][queen[1]] = True
 

@@ -24,7 +24,6 @@ target = int(input())
 # f'The target value "{target}" occurs at index {binary_search(data, target)}.')
 print(binary_search(data, target))
 
-
 """
 TEST CASES:
 
