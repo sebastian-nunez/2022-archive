@@ -10,7 +10,8 @@ print(sorted_cars)
 winners = {'Alex': 3, 'Juan': 1, 'Dominic': 1, 'John': 4, 'Will': 2}
 
 
-def sortByPlaceThenName(winner): return (winner[1], winner[0])
+def sortByPlaceThenName(winner):
+    return (winner[1], winner[0])
 
 
 sorted_winners = dict(
