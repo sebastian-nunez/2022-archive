@@ -11,12 +11,39 @@ public class InputParser {
     private static String viewers = "";
 
     /**
+     * Prompts the user to enter one of the allowed commands.
+     */
+    public static void promptUser() {
+        System.out.println("[0] - View online streamers");
+        System.out.println();
+
+        System.out.println("Streamer commands: ");
+        System.out.println("[1] - Add a streamer");
+        System.out.println("[2] - Remove a streamer");
+        System.out.println("[3] - Update viewer count");
+        System.out.println("[4] - Update category");
+        System.out.println();
+
+        System.out.println("Platform utilities: ");
+        System.out.println("[5] - Request top streamer in the platform");
+        System.out.println("[6] - Request the top streamer in a particular category");
+        System.out.println("[7] - Request viewer count for a particular category");
+        System.out.println("[8] - Request all streamers in a particular category");
+        System.out.println("[9] - Compare a pair of streamers");
+        System.out.println("[10] - Reset the platform");
+        System.out.println();
+
+        System.out.println("Enter any LETTER to terminate the program... :(\n");
+        System.out.print("$ ");
+    }
+
+    /**
      * Given a integer command and a streaming platform, {@code parseIntegerCommand}
      * will parse the input and execute the desired command (along with the corresponding output).
      * @param input
      * @param platform
      */
-    public static void parseIntegerCommand(int input, Platform platform) {
+    public static void parseCommand(int input, Platform platform) {
         switch (input) {
             case 0:
                 handleViewStreamers(platform);
@@ -54,28 +81,6 @@ public class InputParser {
             default:
                 handleInvalidCommand(platform);
         }
-    }
-
-    public static void promptUser() {
-        System.out.println("[0] - View online streamers\n");
-        System.out.println("Streamer commands: ");
-        System.out.println("[1] - Add a streamer");
-        System.out.println("[2] - Remove a streamer");
-        System.out.println("[3] - Update viewer count");
-        System.out.println("[4] - Update category");
-        System.out.println();
-
-        System.out.println("Platform utilities: ");
-        System.out.println("[5] - Request top streamer in the platform");
-        System.out.println("[6] - Request the top streamer in a particular category");
-        System.out.println("[7] - Request viewer count for a particular category");
-        System.out.println("[8] - Request all streamers in a particular category");
-        System.out.println("[9] - Compare a pair of streamers");
-        System.out.println("[10] - Reset the platform");
-        System.out.println();
-
-        System.out.println("Enter any LETTER to terminate the program... :(\n");
-        System.out.print("$ ");
     }
 
     private static void handleViewStreamers(Platform platform) {

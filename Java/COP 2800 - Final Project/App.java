@@ -34,7 +34,7 @@ public class App {
                 break;
             }
 
-            InputParser.parseIntegerCommand(input, twitch);
+            InputParser.parseCommand(input, twitch);
 
             System.out.print("Press ENTER to continue...");
             try {
