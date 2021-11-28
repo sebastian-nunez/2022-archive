@@ -11,7 +11,7 @@
       "environment": [],
       "program": "e:/2022-archive/Java/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "lldb",
+      "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
       "externalConsole": false,
       "setupCommands": [
