@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *     Platform(String platformName, String[][] streamerData)
  * </pre>
  */
-public class Platform implements PlatformUtilities, StreamerUtilities {
+public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
     private String platformName;
     private ArrayList<Streamer> streamers = new ArrayList<Streamer>();
 
