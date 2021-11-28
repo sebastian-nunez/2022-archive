@@ -8,7 +8,7 @@ public class InputParser {
     private static Scanner scanner = new Scanner(System.in);
     private static String name = "";
     private static String category = "";
-    private static String views = "";
+    private static String viewers = "";
 
     /**
      * Given a integer command and a streaming platform, {@code parseIntegerCommand}
@@ -28,7 +28,7 @@ public class InputParser {
                 handleStreamerOffline(platform);
                 break;
             case 3:
-                handleUpdateViews(platform);
+                handleUpdateViewers(platform);
                 break;
             case 4:
                 handleUpdateCategory(platform);
@@ -40,7 +40,7 @@ public class InputParser {
                 handleTopStreamerInCategory(platform);
                 break;
             case 7:
-                handleViewsInCategory(platform);
+                handleViewersInCategory(platform);
                 break;
             case 8:
                 handleStreamersInCategory(platform);
@@ -68,9 +68,9 @@ public class InputParser {
         category = scanner.nextLine();
 
         System.out.print("Enter the viewer count the streamer :: ");
-        views = scanner.nextLine();
+        viewers = scanner.nextLine();
 
-        platform.StreamerOnline(name, category, Integer.parseInt(views));
+        platform.StreamerOnline(name, category, Integer.parseInt(viewers));
     }
 
     private static void handleStreamerOffline(Platform platform) {
@@ -80,14 +80,14 @@ public class InputParser {
         platform.StreamerOffline(name);
     }
 
-    private static void handleUpdateViews(Platform platform) {
+    private static void handleUpdateViewers(Platform platform) {
         System.out.print("Enter the name of the streamer :: ");
         name = scanner.nextLine();
 
         System.out.print("Enter the viewer count the streamer :: ");
-        views = scanner.nextLine();
+        viewers = scanner.nextLine();
 
-        platform.UpdateViews(name, views);
+        platform.UpdateViewers(name, viewers);
     }
 
     private static void handleUpdateCategory(Platform platform) {
@@ -129,19 +129,19 @@ public class InputParser {
                         + "' category\n");
     }
 
-    private static void handleViewsInCategory(Platform platform) {
+    private static void handleViewersInCategory(Platform platform) {
         System.out.print("Enter the category :: ");
         category = scanner.nextLine();
 
-        int topViewsInCategory = platform.ViewsInCategory(category);
+        int topViewersInCategory = platform.ViewersInCategory(category);
 
-        if (topViewsInCategory == 0) {
+        if (topViewersInCategory == 0) {
             System.out.println("\nCurrently, there are no streamers in the '" + category + "' category\n");
             return;
         }
 
         System.out.println(
-                "\nThere are '" + topViewsInCategory + "' viewers in the '" + category
+                "\nThere are '" + topViewersInCategory + "' viewers in the '" + category
                         + "' category\n");
     }
 

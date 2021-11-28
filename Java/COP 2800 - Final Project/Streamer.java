@@ -1,45 +1,45 @@
 /**
  * The {@code Streamer} class represents an individual streamer.
  * <pre>
- *     Streamer(String name, String category, Integer views)
+ *     Streamer(String name, String category, Integer viewers)
  * </pre>
  */
 public class Streamer {
     private String name;
     private String category;
-    private Integer views;
+    private Integer viewers;
 
     public Streamer() {
         this.name = "";
-        this.views = 0;
+        this.viewers = 0;
         this.category = "";
     }
 
     public Streamer(String name) {
         this.name = name;
-        this.views = 0;
+        this.viewers = 0;
         this.category = "";
     }
 
-    public Streamer(String name, String category, Integer views) {
+    public Streamer(String name, String category, Integer viewers) {
         this.name = name;
         setCategory(category);
-        setViews(views);
+        setViewers(viewers);
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getViews() {
-        return views;
+    public Integer getViewers() {
+        return viewers;
     }
 
-    public void setViews(Integer views) {
-        if (views >= 0) {
-            this.views = views;
+    public void setViewers(Integer viewers) {
+        if (viewers >= 0) {
+            this.viewers = viewers;
         } else {
-            this.views = 0;
+            this.viewers = 0;
         }
     }
 
@@ -55,9 +55,9 @@ public class Streamer {
      * Compares streamers based on their number of viewers.
      */
     public int compareTo(Streamer other) {
-        if (views > other.getViews()) {
+        if (viewers > other.getViewers()) {
             return 1;
-        } else if (views < other.getViews()) {
+        } else if (viewers < other.getViewers()) {
             return -1;
         } else {
             return 0;
@@ -65,11 +65,11 @@ public class Streamer {
     }
 
     public String toString() {
-        if (views == 0) {
+        if (viewers == 0) {
             return "'" + name + "' is offline!";
         }
 
-        return name + ": " + this.category + " -> " + views;
+        return name + ": " + this.category + " -> " + viewers;
     }
 
 }

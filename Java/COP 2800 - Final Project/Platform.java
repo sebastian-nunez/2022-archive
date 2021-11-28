@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * The {@code Platform} class represents an individual service platform.
  * <pre>
- *     Platform(String platformName, String[][] clientData)
+ *     Platform(String platformName, String[][] streamerData)
  * </pre>
  */
 public class Platform implements Streamable {
@@ -15,15 +15,15 @@ public class Platform implements Streamable {
         System.out.println(platformName + " platform initiated!\n");
     }
 
-    public Platform(String platformName, String[][] clientData) {
+    public Platform(String platformName, String[][] streamerData) {
         this.platformName = platformName;
 
-        for (String[] data : clientData) {
+        for (String[] data : streamerData) {
             String name = data[0];
             String category = data[1];
-            Integer views = Integer.parseInt(data[2]);
+            Integer viewers = Integer.parseInt(data[2]);
 
-            streamers.add(new Streamer(name, category, views));
+            streamers.add(new Streamer(name, category, viewers));
         }
 
         System.out.println(platformName + " platform initiated!\n");
@@ -44,18 +44,18 @@ public class Platform implements Streamable {
         return true;
     }
 
-    public void StreamerOnline(String name, String category, Integer views) {
+    public void StreamerOnline(String name, String category, Integer viewers) {
         if (!isStreamerOffline(name)) {
             UpdateCategory(name, category);
-            UpdateViews(name, "" + views);
+            UpdateViewers(name, "" + viewers);
 
             System.out.println(
                     "\n'" + name
-                            + "' was already online! His views and category were updated accordingly instead!\n");
+                            + "' was already online! His viewers and category were updated accordingly instead!\n");
             return;
         }
 
-        streamers.add(new Streamer(name, category, views));
+        streamers.add(new Streamer(name, category, viewers));
         System.out.println(
                 "\n'" + name + "' is now online!\n");
     }
@@ -77,7 +77,7 @@ public class Platform implements Streamable {
                 "\n'" + name + "' is now offline!\n");
     }
 
-    public void UpdateViews(String name, String views) {
+    public void UpdateViewers(String name, String viewers) {
         if (isStreamerOffline(name)) {
             System.out.println("\n'" + name + "' is currently offline!");
             return;
@@ -85,13 +85,13 @@ public class Platform implements Streamable {
 
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
-                streamer.setViews(Integer.parseInt(views));
+                streamer.setViewers(Integer.parseInt(viewers));
                 break;
             }
         }
 
         System.out.println(
-                "\n'" + name + "' now has '" + views + "' viewers!\n");
+                "\n'" + name + "' now has '" + viewers + "' viewers!\n");
     }
 
     public void UpdateCategory(String name, String category) {
@@ -121,10 +121,10 @@ public class Platform implements Streamable {
         }
 
         int maxIndex = 0;
-        int maxViews = streamers.get(0).getViews();
+        int maxViewers = streamers.get(0).getViewers();
         for (int i = 1; i < streamers.size(); i++) {
-            if (streamers.get(i).getViews() >= maxViews) {
-                maxViews = streamers.get(i).getViews();
+            if (streamers.get(i).getViewers() >= maxViewers) {
+                maxViewers = streamers.get(i).getViewers();
                 maxIndex = i;
             }
         }
@@ -150,9 +150,9 @@ public class Platform implements Streamable {
         }
 
         int maxIndex = 0;
-        int maxViews = currentStreamers.get(0).getViews();
+        int maxViewers = currentStreamers.get(0).getViewers();
         for (int i = 0; i < currentStreamers.size(); i++) {
-            if (currentStreamers.get(i).getViews() >= maxViews) {
+            if (currentStreamers.get(i).getViewers() >= maxViewers) {
                 maxIndex = i;
             }
         }
@@ -160,12 +160,12 @@ public class Platform implements Streamable {
         return currentStreamers.get(maxIndex).getName();
     }
 
-    public Integer ViewsInCategory(String category) {
+    public Integer ViewersInCategory(String category) {
         int count = 0;
 
         for (Streamer streamer : streamers) {
             if (streamer.getCategory().equals(category)) {
-                count += streamer.getViews();
+                count += streamer.getViewers();
             }
         }
 
@@ -189,7 +189,7 @@ public class Platform implements Streamable {
      * @return String output
      */
     public String compareStreamers(Streamer streamer1, Streamer streamer2) {
-        Integer differenceInViews = Math.abs(streamer2.getViews() - streamer1.getViews());
+        Integer differenceInViewers = Math.abs(streamer2.getViewers() - streamer1.getViewers());
 
         if (isStreamerOffline(streamer1.getName()) && isStreamerOffline(streamer2.getName())) {
             return "Unable to compare '" + streamer1.getName() + "' and '" + streamer2.getName() + "'";
@@ -208,11 +208,11 @@ public class Platform implements Streamable {
                 return "'" + streamer1.getName() + "' has the same amount of viewers as '" + streamer2.getName()
                         + "'";
             case 1:
-                return "'" + streamer1.getName() + "' has '" + differenceInViews + "' more viewers than '"
+                return "'" + streamer1.getName() + "' has '" + differenceInViewers + "' more viewers than '"
                         + streamer2.getName()
                         + "'";
             case -1:
-                return "'" + streamer1.getName() + "' has '" + differenceInViews + "' less viewers than '"
+                return "'" + streamer1.getName() + "' has '" + differenceInViewers + "' less viewers than '"
                         + streamer2.getName()
                         + "'";
             default:
@@ -245,6 +245,9 @@ public class Platform implements Streamable {
         return streamers;
     }
 
+    /**
+     * Resets the platform. All streamers will be set offline.
+     */
     public void resetPlatform() {
         streamers.clear();
         System.out.println("The '" + platformName + "' platform has been reset!\n");

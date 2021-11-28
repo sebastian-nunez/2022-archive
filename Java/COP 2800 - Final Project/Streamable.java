@@ -8,9 +8,9 @@ public interface Streamable {
      * Creates a new {@code Streamer} and adds it to the streaming platform.
      * @param name
      * @param category
-     * @param views
+     * @param viewers
      */
-    public void StreamerOnline(String name, String category, Integer views);
+    public void StreamerOnline(String name, String category, Integer viewers);
 
     /**
      * Removes a specific {@code Streamer} from the streaming platform.
@@ -21,9 +21,9 @@ public interface Streamable {
     /**
      * Updates the number of active viewers of a particular {@code Streamer} within the streaming platform.
      * @param name
-     * @param views
+     * @param viewers
      */
-    public void UpdateViews(String name, String views);
+    public void UpdateViewers(String name, String viewers);
 
     /**
      * Updates the streaming category of a particular {@code Streamer} within the streaming platform.
@@ -33,7 +33,7 @@ public interface Streamable {
     public void UpdateCategory(String name, String category);
 
     /**
-     * Returns the name of the streamer with the most views within the streaming platform.
+     * Returns the name of the streamer with the most viewers within the streaming platform.
      * @return String name
      */
     public String TopStreamer();
@@ -46,11 +46,11 @@ public interface Streamable {
     public String TopStreamerInCategory(String category);
 
     /**
-     * Returns the total number of views within a category.
+     * Returns the total number of viewers within a category.
      * @param category
-     * @return Integer views
+     * @return Integer viewers
      */
-    public Integer ViewsInCategory(String category);
+    public Integer ViewersInCategory(String category);
 
     /**
      * Returns the names of all the streamers within a specific category.
