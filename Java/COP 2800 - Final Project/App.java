@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        // { name, category, viewers }
         String[][] streamerData = {
                 { "ninon", "Fortnite", "1208" },
                 { "sodapoppin", "Just Chatting", "19203" },
