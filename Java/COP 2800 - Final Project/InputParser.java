@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputParser {
@@ -25,6 +26,18 @@ public class InputParser {
                 break;
             case 5:
                 handleTopStreamer(platform);
+                break;
+            case 6:
+                handleTopStreamerInCategory(platform);
+                break;
+            case 7:
+                handleViewsInCategory(platform);
+                break;
+            case 8:
+                handleStreamersInCategory(platform);
+                break;
+            case 9:
+                handleCompareStreamers(platform);
                 break;
             default:
                 handleInvalidCommand(platform);
@@ -77,7 +90,63 @@ public class InputParser {
     }
 
     private static void handleTopStreamer(Platform platform) {
-        System.out.println(platform.TopStreamer());
+        System.out.println(
+                "The top streamer on '" + platform.getPlatformName() + "' is '" + platform.TopStreamer() + "'\n");
+    }
+
+    private static void handleTopStreamerInCategory(Platform platform) {
+        System.out.print("Enter the category :: ");
+        category = scanner.nextLine();
+
+        System.out.println(
+                "\nThe top streamer on '" + category + "' is '" + platform.TopStreamerInCategory(category) + "\n");
+    }
+
+    private static void handleViewsInCategory(Platform platform) {
+        System.out.print("Enter the category :: ");
+        category = scanner.nextLine();
+
+        System.out.println(
+                "\nThere are '" + platform.ViewsInCategory(category) + "' viewers in the '" + category
+                        + "' category\n");
+    }
+
+    private static void handleStreamersInCategory(Platform platform) {
+        System.out.print("Enter the category :: ");
+        category = scanner.nextLine();
+
+        String output = "Currently, ";
+        ArrayList<String> streamerNames = platform.StreamersInCategory(category);
+
+        if (streamerNames.size() == 0) {
+            output += "there are no streamers in the '" + category + "' category";
+        } else if (streamerNames.size() == 1) {
+            output += "only '" + streamerNames.get(0) + "' is streaming in the '" + category + "' category";
+        } else {
+            for (int i = 0; i < streamerNames.size(); i++) {
+                if (i == streamerNames.size() - 1) {
+                    output += "and '" + streamerNames.get(i) + "' are streaming in the '" + category + "' category";
+                    break;
+                }
+
+                output += "'" + streamerNames.get(i) + "', ";
+            }
+        }
+
+        System.out.println("\n" + output + "\n");
+    }
+
+    private static void handleCompareStreamers(Platform platform) {
+        System.out.print("Enter the name of the 1st streamer :: ");
+        String streamer1Name = scanner.nextLine();
+
+        System.out.print("Enter the name of the 2nd streamer :: ");
+        String streamer2Name = scanner.nextLine();
+
+        Streamer streamer1 = platform.getStreamer(streamer1Name);
+        Streamer streamer2 = platform.getStreamer(streamer2Name);
+
+        System.out.println("\n" + Platform.compareStreamers(streamer1, streamer2) + "\n");
     }
 
     private static void handleInvalidCommand(Platform platform) {

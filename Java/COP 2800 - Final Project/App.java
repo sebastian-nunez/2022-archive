@@ -10,13 +10,13 @@ public class App {
                 { "Clix", "Fortnite", "14002" },
                 { "Swagg", "Warzone", "7520" },
                 { "rineksa", "Just Chatting", "420" },
-                { "Wallibear", "Minecraft", "960" },
+                { "Wallibear", "Minecraft", "922" },
                 { "IceManIsaac", "Warzone", "530" },
                 { "Aydan", "Warzone", "11230" },
-                { "DanriqueTW", "Minecraft", "440" },
+                { "DanriqueTW", "Minecraft", "448" },
                 { "DisguisedToast", "Fortnite", "4450" },
                 { "nickmira_", "Just Chatting", "5661" },
-                { "Skloppa", "FIFA 2022", "330" },
+                { "Skloppa", "FIFA 2022", "332" },
         };
 
         Platform twitch = new Platform("Twitch", streamerData);
@@ -39,7 +39,7 @@ public class App {
             System.out.println("[9] - Compare a pair of streamers");
             System.out.println();
 
-            System.out.println("Press any letter to terminate the program... :(\n");
+            System.out.println("Enter any LETTER to terminate the program... :(\n");
             System.out.print("$ ");
 
             try {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Platform implements PlatformUtilities {
     private String platformName;
-    private ArrayList<Streamer> streamers = new ArrayList<Streamer>();
+    private static ArrayList<Streamer> streamers = new ArrayList<Streamer>();
 
     public Platform(String platformName) {
         this.platformName = platformName;
@@ -23,7 +23,7 @@ public class Platform implements PlatformUtilities {
         System.out.println(platformName + " platform initiated!\n");
     }
 
-    private boolean isStreamerOffline(String name) {
+    private static boolean isStreamerOffline(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
                 return false;
@@ -86,7 +86,6 @@ public class Platform implements PlatformUtilities {
     public void UpdateCategory(String name, String category) {
         if (isStreamerOffline(name)) {
             System.out.println("\n'" + name + "' is offline!\n");
-
             return;
         }
 
@@ -102,13 +101,16 @@ public class Platform implements PlatformUtilities {
     }
 
     public String TopStreamer() {
-        int maxIndex = 0;
-        int maxViews = streamers.get(0).getViews();
-
         if (streamers.size() == 0) {
-            return "All streamers are offline!\n";
+            return "\nAll streamers are offline!";
         }
 
+        if (streamers.size() == 1) {
+            return streamers.get(0).getName();
+        }
+
+        int maxIndex = 0;
+        int maxViews = streamers.get(0).getViews();
         for (int i = 1; i < streamers.size(); i++) {
             if (streamers.get(i).getViews() >= maxViews) {
                 maxViews = streamers.get(i).getViews();
@@ -126,6 +128,14 @@ public class Platform implements PlatformUtilities {
             if (streamer.getCategory().equals(category)) {
                 currentStreamers.add(streamer);
             }
+        }
+
+        if (currentStreamers.size() == 0) {
+            return "\nAll streamers are offline!";
+        }
+
+        if (currentStreamers.size() == 1) {
+            return currentStreamers.get(0).getName();
         }
 
         int maxIndex = 0;
@@ -166,21 +176,33 @@ public class Platform implements PlatformUtilities {
     public static String compareStreamers(Streamer streamer1, Streamer streamer2) {
         Integer differenceInViews = Math.abs(streamer2.getViews() - streamer1.getViews());
 
+        if (isStreamerOffline(streamer1.getName()) && isStreamerOffline(streamer2.getName())) {
+            return "Unable to compare '" + streamer1.getName() + "' and '" + streamer2.getName() + "'";
+        }
+
+        if (isStreamerOffline(streamer1.getName())) {
+            return "Unable to compare to '" + streamer2.getName() + "'";
+        }
+
+        if (isStreamerOffline(streamer2.getName())) {
+            return "Unable to compare to '" + streamer1.getName() + "'";
+        }
+
         switch (streamer1.compareTo(streamer2)) {
             case 0:
-                return "'" + streamer1.getName() + " has the same amount of viewers as " + streamer2.getName()
-                        + "'\n";
+                return "'" + streamer1.getName() + "' has the same amount of viewers as '" + streamer2.getName()
+                        + "'";
             case 1:
-                return "'" + streamer1.getName() + " has " + differenceInViews + " more viewers than "
+                return "'" + streamer1.getName() + "' has '" + differenceInViews + "' more viewers than '"
                         + streamer2.getName()
-                        + "'\n";
+                        + "'";
             case -1:
-                return "'" + streamer1.getName() + " has " + differenceInViews + " less viewers than "
+                return "'" + streamer1.getName() + "' has '" + differenceInViews + "' less viewers than '"
                         + streamer2.getName()
-                        + "'\n";
+                        + "'";
             default:
                 return "Invalid comparison between '" + streamer1.getName() + "' and '" + streamer2.getName()
-                        + "'!\n";
+                        + "'!";
 
         }
     }
@@ -192,7 +214,7 @@ public class Platform implements PlatformUtilities {
             }
         }
 
-        System.out.println("'" + name + "' is offline!\n");
+        System.out.println("\n'" + name + "' is offline!");
         return new Streamer(name);
     }
 
