@@ -65,10 +65,6 @@ public class Streamer {
     }
 
     public String toString() {
-        if (viewers == 0) {
-            return "'" + name + "' is offline!";
-        }
-
         return name + ": " + this.category + " -> " + viewers;
     }
 
