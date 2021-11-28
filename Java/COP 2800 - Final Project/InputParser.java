@@ -48,10 +48,12 @@ public class InputParser {
             case 9:
                 handleCompareStreamers(platform);
                 break;
+            case 10:
+                handleResetPlatform(platform);
+                break;
             default:
                 handleInvalidCommand(platform);
         }
-
     }
 
     private static void handleViewStreamers(Platform platform) {
@@ -99,24 +101,47 @@ public class InputParser {
     }
 
     private static void handleTopStreamer(Platform platform) {
+        String topStreamerName = platform.TopStreamer();
+
+        if (topStreamerName.equals("")) {
+            System.out.println("There are currently no streamers live\n");
+            return;
+        }
+
         System.out.println(
-                "The top streamer on '" + platform.getPlatformName() + "' is '" + platform.TopStreamer() + "'\n");
+                "'" + topStreamerName + "' is currently the top streamer on '" + platform.getPlatformName()
+                        + "'\n");
     }
 
     private static void handleTopStreamerInCategory(Platform platform) {
         System.out.print("Enter the category :: ");
         category = scanner.nextLine();
 
+        String topStreamerName = platform.TopStreamerInCategory(category);
+
+        if (topStreamerName.equals("")) {
+            System.out.println("\nCurrently, there are no streamers in the '" + category + "' category\n");
+            return;
+        }
+
         System.out.println(
-                "\nThe top streamer on '" + category + "' is '" + platform.TopStreamerInCategory(category) + "\n");
+                "\n'" + topStreamerName + "' is the top streamer in the '" + category
+                        + "' category\n");
     }
 
     private static void handleViewsInCategory(Platform platform) {
         System.out.print("Enter the category :: ");
         category = scanner.nextLine();
 
+        int topViewsInCategory = platform.ViewsInCategory(category);
+
+        if (topViewsInCategory == 0) {
+            System.out.println("\nCurrently, there are no streamers in the '" + category + "' category\n");
+            return;
+        }
+
         System.out.println(
-                "\nThere are '" + platform.ViewsInCategory(category) + "' viewers in the '" + category
+                "\nThere are '" + topViewsInCategory + "' viewers in the '" + category
                         + "' category\n");
     }
 
@@ -156,6 +181,10 @@ public class InputParser {
         Streamer streamer2 = platform.getStreamer(streamer2Name);
 
         System.out.println("\n" + platform.compareStreamers(streamer1, streamer2) + "\n");
+    }
+
+    private static void handleResetPlatform(Platform platform) {
+        platform.resetPlatform();
     }
 
     private static void handleInvalidCommand(Platform platform) {

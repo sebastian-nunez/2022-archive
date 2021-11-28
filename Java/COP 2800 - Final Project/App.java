@@ -37,6 +37,7 @@ public class App {
             System.out.println("[7] - Request viewer count for a particular category");
             System.out.println("[8] - Request all streamers in a particular category");
             System.out.println("[9] - Compare a pair of streamers");
+            System.out.println("[10] - Reset the platform");
             System.out.println();
 
             System.out.println("Enter any LETTER to terminate the program... :(\n");

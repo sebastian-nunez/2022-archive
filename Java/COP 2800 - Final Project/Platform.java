@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * The {@code Platform} class represents an individual streaming platform (e.g Twitch or YouTube).
+ * The {@code Platform} class represents an individual service platform.
  * <pre>
- *     Platform(String platformName, String[][] streamerData)
+ *     Platform(String platformName, String[][] clientData)
  * </pre>
  */
-public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
+public class Platform implements Streamable {
     private String platformName;
     private ArrayList<Streamer> streamers = new ArrayList<Streamer>();
 
@@ -15,10 +15,10 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         System.out.println(platformName + " platform initiated!\n");
     }
 
-    public Platform(String platformName, String[][] streamerData) {
+    public Platform(String platformName, String[][] clientData) {
         this.platformName = platformName;
 
-        for (String[] data : streamerData) {
+        for (String[] data : clientData) {
             String name = data[0];
             String category = data[1];
             Integer views = Integer.parseInt(data[2]);
@@ -57,7 +57,7 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
 
         streamers.add(new Streamer(name, category, views));
         System.out.println(
-                "\n'" + name + "' is now online!");
+                "\n'" + name + "' is now online!\n");
     }
 
     public void StreamerOffline(String name) {
@@ -79,7 +79,7 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
 
     public void UpdateViews(String name, String views) {
         if (isStreamerOffline(name)) {
-            System.out.println("\n'" + name + "' is currently offline!\n");
+            System.out.println("\n'" + name + "' is currently offline!");
             return;
         }
 
@@ -91,7 +91,7 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         }
 
         System.out.println(
-                "\n'" + name + "' now has '" + views + "' viewers!");
+                "\n'" + name + "' now has '" + views + "' viewers!\n");
     }
 
     public void UpdateCategory(String name, String category) {
@@ -108,12 +108,12 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         }
 
         System.out.println(
-                "\n'" + name + "' is now streaming in the '" + category + "' category!");
+                "\n'" + name + "' is now streaming in the '" + category + "' category!\n");
     }
 
     public String TopStreamer() {
         if (streamers.size() == 0) {
-            return "\nAll streamers are offline!\n";
+            return "";
         }
 
         if (streamers.size() == 1) {
@@ -142,7 +142,7 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         }
 
         if (currentStreamers.size() == 0) {
-            return "\nAll streamers are offline!\n";
+            return "";
         }
 
         if (currentStreamers.size() == 1) {
@@ -233,7 +233,7 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
             }
         }
 
-        System.out.println("\n'" + name + "' is offline!\n");
+        System.out.println("\n'" + name + "' is offline!");
         return new Streamer(name);
     }
 
@@ -245,11 +245,16 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         return streamers;
     }
 
+    public void resetPlatform() {
+        streamers.clear();
+        System.out.println("The '" + platformName + "' platform has been reset!\n");
+    }
+
     public String toString() {
         String output = "";
 
         if (streamers.size() == 0) {
-            return "All streamers are offline!\n";
+            return "All streamers are currently offline!\n";
         }
 
         for (Streamer streamer : streamers) {
