@@ -23,25 +23,7 @@ public class App {
 
         int input;
         while (true) {
-            System.out.println("[0] - View online streamers\n");
-            System.out.println("Streamer commands: ");
-            System.out.println("[1] - Add a streamer");
-            System.out.println("[2] - Remove a streamer");
-            System.out.println("[3] - Update viewer count");
-            System.out.println("[4] - Update category");
-            System.out.println();
-
-            System.out.println("Platform utilities: ");
-            System.out.println("[5] - Request top streamer in the platform");
-            System.out.println("[6] - Request the top streamer in a particular category");
-            System.out.println("[7] - Request viewer count for a particular category");
-            System.out.println("[8] - Request all streamers in a particular category");
-            System.out.println("[9] - Compare a pair of streamers");
-            System.out.println("[10] - Reset the platform");
-            System.out.println();
-
-            System.out.println("Enter any LETTER to terminate the program... :(\n");
-            System.out.print("$ ");
+            InputParser.promptUser();
 
             try {
                 input = scanner.nextInt();
