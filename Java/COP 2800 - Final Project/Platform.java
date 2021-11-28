@@ -29,11 +29,6 @@ public class Platform implements Streamable {
         System.out.println(platformName + " platform initiated!\n");
     }
 
-    /**
-     * Checks if a streamer is currently offline within the streaming platform.
-     * @param name
-     * @return
-     */
     public boolean isStreamerOffline(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
@@ -61,7 +56,7 @@ public class Platform implements Streamable {
     }
 
     public void StreamerOffline(String name) {
-        if (isStreamerOffline(name) || streamers.size() == 0) {
+        if (streamers.size() == 0 || isStreamerOffline(name)) {
             System.out.println("\n'" + name + "' was already offline!\n");
             return;
         }
@@ -184,7 +179,7 @@ public class Platform implements Streamable {
         return streamerNames;
     }
 
-    public String compareStreamers(Streamer streamer1, Streamer streamer2) {
+    public String CompareStreamers(Streamer streamer1, Streamer streamer2) {
         Integer differenceInViewers = Math.abs(streamer2.getViewers() - streamer1.getViewers());
 
         if (isStreamerOffline(streamer1.getName()) && isStreamerOffline(streamer2.getName())) {
@@ -218,6 +213,11 @@ public class Platform implements Streamable {
         }
     }
 
+    public void ResetPlatform() {
+        streamers.clear();
+        System.out.println("The '" + platformName + "' platform has been reset!\n");
+    }
+
     public Streamer getStreamer(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
@@ -227,11 +227,6 @@ public class Platform implements Streamable {
 
         System.out.println("\n'" + name + "' is offline!");
         return new Streamer(name);
-    }
-
-    public void resetPlatform() {
-        streamers.clear();
-        System.out.println("The '" + platformName + "' platform has been reset!\n");
     }
 
     public String getPlatformName() {

@@ -207,11 +207,11 @@ public class InputParser {
         Streamer streamer1 = platform.getStreamer(streamer1Name);
         Streamer streamer2 = platform.getStreamer(streamer2Name);
 
-        System.out.println("\n" + platform.compareStreamers(streamer1, streamer2) + "\n");
+        System.out.println("\n" + platform.CompareStreamers(streamer1, streamer2) + "\n");
     }
 
     private static void handleResetPlatform(Platform platform) {
-        platform.resetPlatform();
+        platform.ResetPlatform();
     }
 
     private static void handleInvalidCommand(Platform platform) {

@@ -5,6 +5,13 @@ import java.util.ArrayList;
  */
 public interface Streamable {
     /**
+     * Checks if a streamer is currently offline within the streaming platform.
+     * @param name
+     * @return boolean isOffline
+     */
+    public boolean isStreamerOffline(String name);
+
+    /**
      * Creates a new {@code Streamer} and adds it to the streaming platform.
      * @param name
      * @param category
@@ -63,7 +70,12 @@ public interface Streamable {
      * Compares a pair of streamers using {@code Streamer.compareTo()}.
      * @return String output
      */
-    public String compareStreamers(Streamer streamer1, Streamer streamer2);
+    public String CompareStreamers(Streamer streamer1, Streamer streamer2);
+
+    /**
+     * Resets the platform. All streamers will be set offline.
+     */
+    public void ResetPlatform();
 
     /**
      * Access an individual streamer from the platform by name.
@@ -71,8 +83,4 @@ public interface Streamable {
      */
     public Streamer getStreamer(String name);
 
-    /**
-     * Resets the platform. All streamers will be set offline.
-     */
-    public void resetPlatform();
 }
