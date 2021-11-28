@@ -21,12 +21,12 @@ public class App {
 
         Platform twitch = new Platform("Twitch", streamerData);
 
-        int input;
+        int command;
         while (true) {
             InputParser.promptUser();
 
             try {
-                input = scanner.nextInt();
+                command = scanner.nextInt();
                 System.out.println();
             } catch (InputMismatchException e) {
                 System.out.println();
@@ -34,10 +34,10 @@ public class App {
                 break;
             }
 
-            InputParser.parseCommand(input, twitch);
+            InputParser.parseCommand(command, twitch);
 
-            System.out.print("Press ENTER to continue...");
             try {
+                System.out.print("Press ENTER to continue...");
                 System.in.read();
             } catch (Exception e) {
             }
