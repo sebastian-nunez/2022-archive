@@ -7,10 +7,11 @@ public class InputParser {
         String name = "";
         String category = "";
         String views = "";
-        boolean success = false;
 
+        boolean success = false;
         switch (input) {
             case 0:
+                // VIEW ONLINE STREAMERS
                 break;
             case 1:
                 System.out.print("Enter the name of the streamer :: ");
@@ -67,7 +68,6 @@ public class InputParser {
                 category = scanner.nextLine();
 
                 success = platform.UpdateCategory(name, category);
-
                 if (success) {
                     System.out.println(
                             "\n'" + name + "' is now streaming in the '" + category + "' category!\n");
@@ -75,6 +75,8 @@ public class InputParser {
                     System.out.println("\n'" + name + "' is offline!\n");
                 }
                 break;
+            default:
+                System.out.println("INVALID command!\n");
         }
 
         System.out.println(platform);

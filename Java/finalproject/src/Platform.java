@@ -5,18 +5,9 @@ public class Platform implements PlatformUtilities {
     private String platformName;
     private ArrayList<Streamer> streamers = new ArrayList<Streamer>();
 
-    private boolean isStreamerOffline(String name) {
-        for (Streamer streamer : streamers) {
-            if (streamer.getName().equals(name)) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public Platform(String platformName) {
         this.platformName = platformName;
+        System.out.println(platformName + " platform initiated!");
     }
 
     public Platform(String platformName, String[][] streamerData) {
@@ -29,6 +20,18 @@ public class Platform implements PlatformUtilities {
 
             streamers.add(new Streamer(name, category, views));
         }
+
+        System.out.println(platformName + " platform initiated!\n");
+    }
+
+    private boolean isStreamerOffline(String name) {
+        for (Streamer streamer : streamers) {
+            if (streamer.getName().equals(name)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean StreamerOnline(String name, String category, Integer views) {
@@ -80,7 +83,6 @@ public class Platform implements PlatformUtilities {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
                 streamer.setCategory(category);
-
                 break;
             }
         }

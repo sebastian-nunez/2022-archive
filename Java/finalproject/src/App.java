@@ -3,6 +3,8 @@ import java.util.InputMismatchException;
 
 public class App {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         String[][] streamerData = {
                 { "ninon", "Fortnite", "1208" },
                 { "sodapoppin", "Just Chatting", "19203" },
@@ -16,15 +18,11 @@ public class App {
                 { "DisguisedToast", "Fortnite", "4450" },
                 { "nickmira_", "Just Chatting", "5661" },
                 { "Skloppa", "FIFA 2022", "330" },
-
         };
 
         Platform twitch = new Platform("Twitch", streamerData);
-        System.out.println("Twitch platform initiated!\n");
 
-        Scanner scanner = new Scanner(System.in);
-
-        int input = -1;
+        int input;
         while (true) {
             System.out.println("[0] - View online streamers\n");
             System.out.println("Streamer commands: ");
@@ -42,11 +40,12 @@ public class App {
             System.out.println("[9] - Compare a pair of streamers");
             System.out.println();
 
-            System.out.println("Press 'Q' to terminate the program... :(\n");
+            System.out.println("Press any letter to terminate the program... :(\n");
             System.out.print("$ ");
 
             try {
                 input = scanner.nextInt();
+                System.out.println();
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println("Quitting the program...");
