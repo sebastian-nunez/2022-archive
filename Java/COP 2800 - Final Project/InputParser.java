@@ -177,16 +177,16 @@ public class InputParser {
         category = scanner.nextLine();
 
         ArrayList<String> streamerNames = platform.StreamersInCategory(category);
-
         String output = "Currently, ";
+
         if (streamerNames.size() == 0) {
-            output += "there are no streamers in the '" + category + "' category";
+            output += "there are no streamers";
         } else if (streamerNames.size() == 1) {
-            output += "only '" + streamerNames.get(0) + "' is streaming in the '" + category + "' category";
+            output += "only '" + streamerNames.get(0) + "' is streaming";
         } else {
             for (int i = 0; i < streamerNames.size(); i++) {
                 if (i == streamerNames.size() - 1) {
-                    output += "and '" + streamerNames.get(i) + "' are streaming in the '" + category + "' category";
+                    output += "and '" + streamerNames.get(i) + "' are streaming";
                     break;
                 }
 
@@ -194,7 +194,7 @@ public class InputParser {
             }
         }
 
-        System.out.println("\n" + output + "\n");
+        System.out.println("\n" + output + " in the '" + category + "' category\n");
     }
 
     private static void handleCompareStreamers(Platform platform) {
