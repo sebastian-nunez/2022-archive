@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.lang.Math;
 
 public class Platform implements PlatformUtilities {
     private String platformName;
@@ -34,20 +33,26 @@ public class Platform implements PlatformUtilities {
         return true;
     }
 
-    public boolean StreamerOnline(String name, String category, Integer views) {
+    public void StreamerOnline(String name, String category, Integer views) {
         if (!isStreamerOffline(name)) {
             UpdateCategory(name, category);
             UpdateViews(name, "" + views);
-            return false;
+
+            System.out.println(
+                    "\n'" + name
+                            + "' was already online! His views and category were updated accordingly instead!\n");
+            return;
         }
 
         streamers.add(new Streamer(name, category, views));
-        return true;
+        System.out.println(
+                "\n'" + name + "' is now online!\n");
     }
 
-    public boolean StreamerOffline(String name) {
+    public void StreamerOffline(String name) {
         if (isStreamerOffline(name) || streamers.size() == 0) {
-            return false;
+            System.out.println("\n'" + name + "' is already offline!\n");
+            return;
         }
 
         for (int i = 0; i < streamers.size(); i++) {
@@ -57,12 +62,14 @@ public class Platform implements PlatformUtilities {
             }
         }
 
-        return true;
+        System.out.println(
+                "\n'" + name + "' is now offline!\n");
     }
 
-    public boolean UpdateViews(String name, String views) {
+    public void UpdateViews(String name, String views) {
         if (isStreamerOffline(name)) {
-            return false;
+            System.out.println("\n'" + name + "' is offline!\n");
+            return;
         }
 
         for (Streamer streamer : streamers) {
@@ -72,12 +79,15 @@ public class Platform implements PlatformUtilities {
             }
         }
 
-        return true;
+        System.out.println(
+                "\n'" + name + "' now has " + views + " viewers!\n");
     }
 
-    public boolean UpdateCategory(String name, String category) {
+    public void UpdateCategory(String name, String category) {
         if (isStreamerOffline(name)) {
-            return false;
+            System.out.println("\n'" + name + "' is offline!\n");
+
+            return;
         }
 
         for (Streamer streamer : streamers) {
@@ -87,7 +97,8 @@ public class Platform implements PlatformUtilities {
             }
         }
 
-        return true;
+        System.out.println(
+                "\n'" + name + "' is now streaming in the '" + category + "' category!\n");
     }
 
     public String TopStreamer() {
@@ -183,6 +194,10 @@ public class Platform implements PlatformUtilities {
 
         System.out.println("'" + name + "' is offline!\n");
         return new Streamer(name);
+    }
+
+    public String getPlatformName() {
+        return platformName;
     }
 
     public String toString() {

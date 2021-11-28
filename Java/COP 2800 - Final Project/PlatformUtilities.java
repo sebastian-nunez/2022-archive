@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public interface PlatformUtilities {
 
-    public boolean StreamerOnline(String name, String category, Integer views);
+    public void StreamerOnline(String name, String category, Integer views);
 
-    public boolean StreamerOffline(String name);
+    public void StreamerOffline(String name);
 
-    public boolean UpdateViews(String name, String views);
+    public void UpdateViews(String name, String views);
 
-    public boolean UpdateCategory(String name, String category);
+    public void UpdateCategory(String name, String category);
 
     public String TopStreamer();
 

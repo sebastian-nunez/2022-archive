@@ -1,10 +1,9 @@
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         String[][] streamerData = {
                 { "ninon", "Fortnite", "1208" },
                 { "sodapoppin", "Just Chatting", "19203" },
@@ -52,7 +51,7 @@ public class App {
                 break;
             }
 
-            InputParser.handleUserInput(input, twitch);
+            InputParser.userInput(input, twitch);
 
             System.out.print("Press ENTER to continue...");
             try {
