@@ -1,3 +1,9 @@
+/**
+ * The {@code Streamer} class represents an individual streamer.
+ * <pre>
+ *     Streamer(String name, String category, Integer views)
+ * </pre>
+ */
 public class Streamer {
     private String name;
     private String category;
@@ -45,6 +51,9 @@ public class Streamer {
         this.category = category;
     }
 
+    /**
+     * Compares streamers based on their number of viewers.
+     */
     public int compareTo(Streamer other) {
         if (views > other.getViews()) {
             return 1;

@@ -1,14 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * The {@code PlatformUtilities} interface imposes some basic 'utility' methods for any streaming platform.
+ */
 public interface PlatformUtilities {
-
-    public void StreamerOnline(String name, String category, Integer views);
-
-    public void StreamerOffline(String name);
-
-    public void UpdateViews(String name, String views);
-
-    public void UpdateCategory(String name, String category);
 
     public String TopStreamer();
 

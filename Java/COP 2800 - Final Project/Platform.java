@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 
-public class Platform implements PlatformUtilities {
+/**
+ * The {@code Platform} class represents an individual streaming platform (e.g Twitch or YouTube).
+ * <pre>
+ *     Platform(String platformName, String[][] streamerData)
+ * </pre>
+ */
+public class Platform implements PlatformUtilities, StreamerUtilities {
     private String platformName;
     private ArrayList<Streamer> streamers = new ArrayList<Streamer>();
 
@@ -173,6 +179,9 @@ public class Platform implements PlatformUtilities {
         return streamerNames;
     }
 
+    /**
+     * Compares a pair of streamers using the {@code Streamer.compareTo()} method.
+     */
     public String compareStreamers(Streamer streamer1, Streamer streamer2) {
         Integer differenceInViews = Math.abs(streamer2.getViews() - streamer1.getViews());
 
@@ -207,6 +216,9 @@ public class Platform implements PlatformUtilities {
         }
     }
 
+    /**
+     * Access an individual streamer from the platform by name
+     */
     public Streamer getStreamer(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {

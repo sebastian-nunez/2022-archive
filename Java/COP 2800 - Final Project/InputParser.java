@@ -1,12 +1,21 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The {@code InputParser} class allows parsing through different types of inputs.
+ */
 public class InputParser {
     private static Scanner scanner = new Scanner(System.in);
     private static String name = "";
     private static String category = "";
     private static String views = "";
 
+    /**
+     * Given a integer command and a streaming platform, {@code userInput(int input, Platform platform)}
+     * will parse the input and execute the desired command.
+     * @param input
+     * @param platform
+     */
     public static void userInput(int input, Platform platform) {
         switch (input) {
             case 0:
@@ -115,9 +124,9 @@ public class InputParser {
         System.out.print("Enter the category :: ");
         category = scanner.nextLine();
 
-        String output = "Currently, ";
         ArrayList<String> streamerNames = platform.StreamersInCategory(category);
 
+        String output = "Currently, ";
         if (streamerNames.size() == 0) {
             output += "there are no streamers in the '" + category + "' category";
         } else if (streamerNames.size() == 1) {
