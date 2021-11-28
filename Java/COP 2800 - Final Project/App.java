@@ -11,7 +11,7 @@ public class App {
                 { "Swagg", "Warzone", "7520" },
                 { "rineksa", "Just Chatting", "420" },
                 { "Wallibear", "Minecraft", "922" },
-                { "IceManIsaac", "Warzone", "530" },
+                { "IceManIsaac", "Warzone", "332" },
                 { "Aydan", "Warzone", "11230" },
                 { "DanriqueTW", "Minecraft", "448" },
                 { "DisguisedToast", "Fortnite", "4450" },
