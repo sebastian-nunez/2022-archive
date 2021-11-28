@@ -11,12 +11,12 @@ public class InputParser {
     private static String views = "";
 
     /**
-     * Given a integer command and a streaming platform, {@code userInput(int input, Platform platform)}
-     * will parse the input and execute the desired command.
+     * Given a integer command and a streaming platform, {@code parseIntegerCommand}
+     * will parse the input and execute the desired command (along with the corresponding output).
      * @param input
      * @param platform
      */
-    public static void userInput(int input, Platform platform) {
+    public static void parseIntegerCommand(int input, Platform platform) {
         switch (input) {
             case 0:
                 handleViewStreamers(platform);
