@@ -184,10 +184,6 @@ public class Platform implements Streamable {
         return streamerNames;
     }
 
-    /**
-     * Compares a pair of streamers using {@code Streamer.compareTo()}.
-     * @return String output
-     */
     public String compareStreamers(Streamer streamer1, Streamer streamer2) {
         Integer differenceInViewers = Math.abs(streamer2.getViewers() - streamer1.getViewers());
 
@@ -222,10 +218,6 @@ public class Platform implements Streamable {
         }
     }
 
-    /**
-     * Access an individual streamer from the platform by name.
-     * @return Streamer streamer
-     */
     public Streamer getStreamer(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
@@ -237,20 +229,17 @@ public class Platform implements Streamable {
         return new Streamer(name);
     }
 
+    public void resetPlatform() {
+        streamers.clear();
+        System.out.println("The '" + platformName + "' platform has been reset!\n");
+    }
+
     public String getPlatformName() {
         return platformName;
     }
 
     public ArrayList<Streamer> getStreamers() {
         return streamers;
-    }
-
-    /**
-     * Resets the platform. All streamers will be set offline.
-     */
-    public void resetPlatform() {
-        streamers.clear();
-        System.out.println("The '" + platformName + "' platform has been reset!\n");
     }
 
     public String toString() {

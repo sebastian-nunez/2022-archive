@@ -58,4 +58,21 @@ public interface Streamable {
      * @return ArrayList<String> names
      */
     public ArrayList<String> StreamersInCategory(String category);
+
+    /**
+     * Compares a pair of streamers using {@code Streamer.compareTo()}.
+     * @return String output
+     */
+    public String compareStreamers(Streamer streamer1, Streamer streamer2);
+
+    /**
+     * Access an individual streamer from the platform by name.
+     * @return Streamer streamer
+     */
+    public Streamer getStreamer(String name);
+
+    /**
+     * Resets the platform. All streamers will be set offline.
+     */
+    public void resetPlatform();
 }
