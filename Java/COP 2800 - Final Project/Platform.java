@@ -29,6 +29,11 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
         System.out.println(platformName + " platform initiated!\n");
     }
 
+    /**
+     * Checks if a streamer is currently offline within the streaming platform.
+     * @param name
+     * @return
+     */
     public boolean isStreamerOffline(String name) {
         for (Streamer streamer : streamers) {
             if (streamer.getName().equals(name)) {
@@ -180,7 +185,8 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
     }
 
     /**
-     * Compares a pair of streamers using the {@code Streamer.compareTo()} method.
+     * Compares a pair of streamers using {@code Streamer.compareTo()}.
+     * @return String output
      */
     public String compareStreamers(Streamer streamer1, Streamer streamer2) {
         Integer differenceInViews = Math.abs(streamer2.getViews() - streamer1.getViews());
@@ -217,7 +223,8 @@ public class Platform implements PlatformUtilities, PlatformStreamerUtilities {
     }
 
     /**
-     * Access an individual streamer from the platform by name
+     * Access an individual streamer from the platform by name.
+     * @return Streamer streamer
      */
     public Streamer getStreamer(String name) {
         for (Streamer streamer : streamers) {
